@@ -13,14 +13,14 @@ new WebpackDevServer(webpack(config), {
       bypass :  function ( req , res , proxyOptions )  {
         console.log('daili')
       }
-    },
+    }/*,
     '/get.php' :  {
-      target :  'http://guanjia.qq.com/tapi/vr/',
+      target :  'http://localhost:8888/',
       secure :  false ,
       bypass :  function ( req , res , proxyOptions )  {
         console.log('daili2')
       }
-    }
+    }*/
   }
 }).listen(3000, 'localhost', function (err, result) {
   if (err) {
