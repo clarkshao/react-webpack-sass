@@ -2,37 +2,33 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var client = 'webpack-dev-server/client?http://localhost:3000';
-var server = 'webpack/hot/only-dev-server';
 module.exports = {
-    //This can a little bit longer time to compile, then you can see the code you just worte:
-    devtool: 'eval-source-map',
+    //It will add a .map file for you. That file is not actually loaded into the browser until the DevTools are brought up.
+    devtool: 'source-map',
     entry: {
-        index: [
-            //这里把clien和server一起打包进了index和app.js文件，因而导致文件过大，生产环境需去除
-            client,
-            server,
-            './src/js/index'
-        ], app: [
-            client,
-            server,
-            "./src/js/app"
-        ],
-        react: ['react', 'react-dom'],
+        index: ['./src/js/index'],
+        app: ["./src/js/app"],
+        react: ['react'],
         jquery: ['jquery']
     },
     output: {
-        path: path.join(__dirname, 'dist'),
-        filename: '[name].bundle.js'
+        path: path.join(__dirname, 'build'),
+        filename: '[name].[hash].js',
+        //chunkFilename: '[chunkhash].bundle.js'
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
-            name: ['jquery', 'react'],
+            name: ['jquery','react'],
+            filename: '[name].js',
             minChunks: Infinity
         }),
         new ExtractTextPlugin('style.css', {
             allChunks: true
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
         }),
         new HtmlWebpackPlugin({
             title: 'Hello World app',
@@ -60,7 +56,7 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.js$/,
-            loaders: ['react-hot', 'babel'],
+            loaders: ['babel'],
             include: path.join(__dirname, 'src')
         }, {
             test: /\.scss$/,
