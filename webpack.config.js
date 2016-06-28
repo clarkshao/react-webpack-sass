@@ -29,6 +29,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: ['jquery', 'react'],
+            filename: '[name].js',
             minChunks: Infinity
         }),
         new ExtractTextPlugin('style.css', {
