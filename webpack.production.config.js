@@ -13,7 +13,7 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, 'build'),
-        filename: '[name].[hash].js',
+        filename: '[name].[chunkhash:8].js',
         //chunkFilename: '[chunkhash].bundle.js'
     },
     plugins: [
@@ -22,7 +22,7 @@ module.exports = {
             filename: '[name].js',
             minChunks: Infinity
         }),
-        new ExtractTextPlugin('style.css', {
+        new ExtractTextPlugin('style.[contenthash:9].css', {
             allChunks: true
         }),
         new webpack.optimize.UglifyJsPlugin({
