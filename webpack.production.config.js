@@ -49,7 +49,7 @@ module.exports = {
             title: 'Hello World index',
             template: __dirname  + '/template/common.ejs',
             filename: 'index.html',
-            chunks: ['index', 'react','jquery'],
+            chunks: ['index', 'react'],
             inject: 'body'
         })
     ],

@@ -4,7 +4,7 @@ develop environment
 ```
 npm install
 npm start
-open http://localhost:3000
+open http://localhost:3000/index.html
 ```
 
 product environment
@@ -13,8 +13,6 @@ product environment
 npm run build
 ```
 
-Common files are built without hashcode in filename.
-
-Compared with gulp-dev, it's quite uncomfortable, I know.
+Common files are built without hashcode within filename.
 
 Welcome to pull request for better ideas.
