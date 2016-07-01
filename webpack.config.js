@@ -8,17 +8,17 @@ module.exports = {
     //This can a little bit longer time to compile, then you can see the code you just worte:
     devtool: 'eval-source-map',
     entry: {
-        index: [
+        todo: [
             //这里把clien和server一起打包进了index和app.js文件，因而导致文件过大，生产环境需去除
             client,
             server,
-            './src/js/index'
-        ], app: [
+            './src/modules/todoList/index'
+        ], universal: [
             client,
             server,
-            "./src/js/app"
+            "./src/modules/universal/index"
         ],
-        react: ['react', 'react-dom'],
+        react: ['react', 'react-dom','react-redux'],
         jquery: ['jquery']
     },
     output: {
@@ -38,9 +38,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Hello World app',
             template: __dirname  + '/template/common.ejs',
-            filename: 'app.html',
+            filename: 'universal.html',
             //chunks这个参数告诉插件要引用entry里面的哪几个入口
-            chunks: ['app', 'react','jquery'],
+            chunks: ['universal', 'react'],
             //chunksSortMode: function(a,b){
             //    var index = {'app':1, 'react':3,'jquery':2},
             //    aI = index[a.origins[0].name],
@@ -53,8 +53,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Hello World index',
             template: __dirname  + '/template/common.ejs',
-            filename: 'index.html',
-            chunks: ['index', 'react'],
+            filename: 'todo.html',
+            chunks: ['todo', 'react'],
             inject: 'body'
         })
     ],

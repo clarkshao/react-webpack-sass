@@ -1,7 +1,7 @@
 /**
  * Created by clark on 16/4/28.
  */
-import '../css/base.scss';
+import '../../css/base.scss';
 
 import React from 'react'
 import { render } from 'react-dom'

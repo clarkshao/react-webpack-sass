@@ -35,7 +35,7 @@ module.exports = {
             template: __dirname  + '/template/common.ejs',
             filename: 'app.html',
             //chunks这个参数告诉插件要引用entry里面的哪几个入口
-            chunks: ['app', 'react','jquery'],
+            chunks: ['app', 'react'],
             //chunksSortMode: function(a,b){
             //    var index = {'app':1, 'react':3,'jquery':2},
             //    aI = index[a.origins[0].name],
