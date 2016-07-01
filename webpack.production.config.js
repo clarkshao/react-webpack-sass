@@ -6,9 +6,9 @@ module.exports = {
     //It will add a .map file for you. That file is not actually loaded into the browser until the DevTools are brought up.
     devtool: 'source-map',
     entry: {
-        index: ['./src/js/index'],
-        app: ["./src/js/app"],
-        react: ['react'],
+        todo: ['./src/modules/todoList/index'],
+        universal: ["./src/modules/universal/index"],
+        react: ['react', 'react-dom','react-redux'],
         jquery: ['jquery']
     },
     output: {
@@ -33,9 +33,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Hello World app',
             template: __dirname  + '/template/common.ejs',
-            filename: 'app.html',
+            filename: 'universal.html',
             //chunks这个参数告诉插件要引用entry里面的哪几个入口
-            chunks: ['app', 'react'],
+            chunks: ['universal', 'react'],
             //chunksSortMode: function(a,b){
             //    var index = {'app':1, 'react':3,'jquery':2},
             //    aI = index[a.origins[0].name],
@@ -48,8 +48,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Hello World index',
             template: __dirname  + '/template/common.ejs',
-            filename: 'index.html',
-            chunks: ['index', 'react'],
+            filename: 'todo.html',
+            chunks: ['todo', 'react'],
             inject: 'body'
         })
     ],
