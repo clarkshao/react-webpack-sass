@@ -17,6 +17,10 @@ module.exports = {
             client,
             server,
             "./src/modules/universal/index"
+        ], real: [
+            client,
+            server,
+            "./src/modules/realWorld/index"
         ],
         react: ['react', 'react-dom','react-redux'],
         jquery: ['jquery']
@@ -55,6 +59,13 @@ module.exports = {
             template: __dirname  + '/template/common.ejs',
             filename: 'todo.html',
             chunks: ['todo', 'react'],
+            inject: 'body'
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Real World',
+            template: __dirname  + '/template/common.ejs',
+            filename: 'real.html',
+            chunks: ['real', 'react'],
             inject: 'body'
         })
     ],
