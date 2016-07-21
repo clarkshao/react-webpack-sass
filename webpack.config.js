@@ -8,7 +8,7 @@ module.exports = {
     //This can a little bit longer time to compile, then you can see the code you just worte:
     devtool: 'eval-source-map',
     entry: {
-        todo: [
+        /*todo: [
             //这里把clien和server一起打包进了index和app.js文件，因而导致文件过大，生产环境需去除
             client,
             server,
@@ -21,6 +21,10 @@ module.exports = {
             client,
             server,
             "./src/modules/realWorld/index"
+        ], */upload: [
+            client,
+            server,
+            "./src/modules/uploadVideo/index"
         ],
         react: ['react', 'react-dom','react-redux'],
         jquery: ['jquery']
@@ -39,7 +43,7 @@ module.exports = {
         new ExtractTextPlugin('style.css', {
             allChunks: true
         }),
-        new HtmlWebpackPlugin({
+        /*new HtmlWebpackPlugin({
             title: 'Hello World app',
             template: __dirname  + '/template/common.ejs',
             filename: 'universal.html',
@@ -66,6 +70,13 @@ module.exports = {
             template: __dirname  + '/template/common.ejs',
             filename: 'real.html',
             chunks: ['real', 'react'],
+            inject: 'body'
+        })*/
+        new HtmlWebpackPlugin({
+            title: 'Upload Video',
+            template: __dirname  + '/template/common.ejs',
+            filename: 'upload.html',
+            chunks: ['upload', 'react'],
             inject: 'body'
         })
     ],
