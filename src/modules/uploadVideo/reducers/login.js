@@ -1,6 +1,6 @@
 import { LOGOUT, LOGIN } from '../actions'
 
-//default 不能省，如果是作为整体引用时
+//[ default ] is necessary when imported as a whole
 export default function handleSigninBtn(state = LOGIN, action = {}) {
     switch (action.type) {
         case LOGOUT:

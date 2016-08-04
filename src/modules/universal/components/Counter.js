@@ -13,6 +13,7 @@ class Counter extends Component {
                 {' '}
                 <button onClick={incrementIfOdd}>Increment if odd</button>
                 {' '}
+                {/* to avoid event being treat as delay */}
                 <button onClick={() => incrementAsync()}>Increment async</button>
             </p>
         )
